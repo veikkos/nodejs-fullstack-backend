@@ -6,7 +6,10 @@ const logger = (request, response, next) => {
 }
 
 const init = (app) => {
-    app.use(logger);
+    if (process.env.NODE_ENV !== 'test') {
+        // Avoid logging in unittests because it messes up output
+        app.use(logger);
+    }
 }
 
 module.exports = {

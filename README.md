@@ -6,10 +6,15 @@ example](https://github.com/veikkos/react-fullstack-frontend).
 ## Usage
 
 You need to create [MongoDB cluster](https://www.mongodb.com/) and
-provider your MongoDB URI (`YOUR_MONGODB_URI`) in-place at `index.js`
+provider your MongoDB URI (`YOUR_MONGODB_URI`) in-place at `.env`
 
+Install dependencies
 ```
 npm install
+```
+
+Start backend
+```
 npm start
 ```
 
@@ -17,6 +22,15 @@ Backend is started to port 3001. You can test it with
 browser. Following command should initially return empty list.
 
 `http://localhost:3001/address`
+
+## Tests
+
+Backend is tested with mocked MongoDB using
+[mongodb-memory-server](https://www.npmjs.com/package/mongodb-memory-server). Tests
+can be executed with
+```
+npm test
+```
 
 ### API
 

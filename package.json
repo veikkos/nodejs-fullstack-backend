@@ -4,13 +4,22 @@
   "description": "Example backend for React frontend",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "cross-env NODE_ENV=production node index.js",
+    "test": "cross-env NODE_ENV=test mocha"
   },
   "author": "veikkos",
   "license": "MIT",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.11.17"
+  },
+  "devDependencies": {
+    "chai": "^4.3.0",
+    "cross-env": "^7.0.3",
+    "mocha": "^8.3.0",
+    "mongodb-memory-server": "^6.9.3",
+    "supertest": "^6.1.3"
   }
 }

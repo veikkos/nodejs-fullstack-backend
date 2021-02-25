@@ -1,27 +1,22 @@
-const mongoose = require('mongoose')
+require('dotenv').config()
+const mongo = require('./utils/mongo')
 const express = require('express')
 const app = express()
 const cors = require('cors')
-const middleware = require('./middleware')
+const middleware = require('./utils/middleware')
 const { Address } = require('./models/address')
 
 const port = 3001
+const addressUri = '/address'
 
 app.use(cors())
 app.use(express.json());
 
 middleware.init(app)
 
-const addressUri = '/address'
-
-const mongoUri = YOUR_MONGODB_URI
-
-mongoose.connect(mongoUri, {
-    seNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true
-})
+if (process.env.NODE_ENV !== 'test') {
+    mongo.init()
+}
 
 app.get(addressUri, (request, response) => {
     Address.find({})
@@ -56,6 +51,10 @@ app.post(addressUri, (request, response) => {
         .catch(() => response.status(500).end())
 })
 
-app.listen(port, () => {
-    console.log(`Listening port ${port}`)
-})
+if (process.env.NODE_ENV !== 'test') {
+    app.listen(port, () => {
+        console.log(`Listening port ${port}`)
+    })
+}
+
+module.exports = app
