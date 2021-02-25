@@ -1,11 +1,7 @@
 # https://github.com/actions/starter-workflows/blob/main/ci/node.js.yml
 name: Node.js CI
 
-on:
-  push:
-    branches: [ $default-branch ]
-  pull_request:
-    branches: [ $default-branch ]
+on: [push]
 
 jobs:
   build:
