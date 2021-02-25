@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const middleware = require('./middleware')
+const { Address } = require('./models/address')
 
 const port = 3001
 
@@ -15,23 +16,12 @@ const addressUri = '/address'
 
 const mongoUri = YOUR_MONGODB_URI
 
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
-
-const addressSchema = new mongoose.Schema({
-    name: String,
-    address: String,
-    developer: Boolean,
+mongoose.connect(mongoUri, {
+    seNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true
 })
-
-addressSchema.set('toJSON', {
-    transform: (document, returnedObject) => {
-        returnedObject.id = returnedObject._id.toString()
-        delete returnedObject._id
-        delete returnedObject.__v
-    }
-})
-
-const Address = mongoose.model('Address', addressSchema)
 
 app.get(addressUri, (request, response) => {
     Address.find({})
@@ -41,7 +31,7 @@ app.get(addressUri, (request, response) => {
 
 app.delete(addressUri, (request, response) => {
     if (!request.query || !request.query.id) {
-        return response.status(400).json({ error: 'name ID' })
+        return response.status(400).json({ error: 'ID missing' })
     }
 
     Address.findByIdAndRemove(request.query.id)
