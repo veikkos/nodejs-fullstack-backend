@@ -1,5 +1,8 @@
 # Backend example with Node.js
 
+[![Node.js
+CI](https://github.com/veikkos/react-fullstack-backend/actions/workflows/node.js.yml/badge.svg)](https://github.com/veikkos/react-fullstack-backend/actions/workflows/node.js.yml)
+
 This backend works together with [React frontend
 example](https://github.com/veikkos/react-fullstack-frontend).
 
