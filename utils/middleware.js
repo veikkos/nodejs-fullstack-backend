@@ -1,3 +1,6 @@
+/** Logger middleware is used to print requests to terminal for debugging purposes
+ * @module middleware
+*/
 const logger = (request, response, next) => {
     console.log(`${request.method} ${request.path}`)
     console.log('Body:', request.body)

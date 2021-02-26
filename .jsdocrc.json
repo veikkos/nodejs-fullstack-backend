@@ -1,0 +1,10 @@
+{
+    "source": {
+        "include": [
+            "README.md",
+            "index.js",
+            "utils"
+        ],
+        "includePattern": ".+\\.js"
+    }
+}
